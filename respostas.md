@@ -1,3 +1,5 @@
+# Esse documento contém as minhas respostas
+
 1.
 
 <ins>**a) A saída será undefined seguido de erro**</ins>
