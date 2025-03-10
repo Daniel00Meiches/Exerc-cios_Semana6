@@ -134,3 +134,21 @@ A asserção e a razão são verdadeiras. O modo que o enunciado aplica o concei
 
 ```
 
+9.
+
+```javascript
+var soma = [];                            // Array que vai guardar os dobros dos valores do array nums[]
+
+function somaArray(num1, num2, num3, num4) {
+
+    var nums = [num1, num2, num3, num4];  // O array nums vai abrigar os parâmetros da função somaArray, para que o cálculo dos dobros possa ser feito no loop for
+
+    for (i = 0; i < nums.length; i++) {
+        soma.push(2 * nums[i]);           // No VSCode, .push vai append (adicionar no final da lista) a multiplicação (2 * nums[i])
+    }
+    return soma;                          // O valor do array soma[] (nesse exemplo [2, 4, 6, 8]) será retornado para a função somaArray (somaArray será igual a [2, 4, 6, 8])
+}
+
+console.log(somaArray(1, 2, 3, 4));       // Saída: [ 2, 4, 6, 8 ]
+```
+
