@@ -141,7 +141,7 @@ var soma = [];                            // Array que vai guardar os dobros dos
 
 function somaArray(num1, num2, num3, num4) {
 
-    var nums = [num1, num2, num3, num4];  // O array nums vai abrigar os parâmetros da função somaArray, para que o cálculo dos dobros possa ser feito no loop for
+    var nums = [num1, num2, num3, num4];  // O array nums vai guardar os valores dos parâmetros da função somaArray, para que o cálculo dos dobros possa ser feito no loop for usando os valores de index da lista
 
     for (i = 0; i < nums.length; i++) {
         soma.push(2 * nums[i]);           // No VSCode, .push vai append (adicionar no final da lista) a multiplicação (2 * nums[i])
