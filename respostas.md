@@ -54,6 +54,20 @@ console.log(calcularPreco("eletrônico")); // Saída: 1000
 4.
 
 <ins>**d) 24**</ins>
+<br>
+A justificativa está no código abaixo:
+
+```javascript
+let numeros = [1, 2, 3, 4, 5];
+
+let resultado = numeros.map(x => x * 2).filter(x => x > 5).reduce((a, b) => a + b, 0);
+
+console.log(resultado);
+
+// O .map vai transformar cada elemento do array. É aplicado a conta fornecida (x * 2) a cada item do array e então um novo array é retornado com os resultados. Nesse caso: [1 * 2, 2 * 2, 3 * 2, 4 * 2, 5 * 2] --> [2, 4, 6, 8, 10]
+// O .filter vai criar um novo array que contém os valores que atendem a uma condição que é especificada. Nesse caso, os valores que forem maiores que 5 (x > 5) entrarão nesse array filtrado. Sobrará [6, 8, 10]
+// O .reduce é usado para reduzir o array a um único valor. Esse array vai conseguir isso somando dois números a e b. Começamos com 0 + 6 = 6, depois 6 + 8 = 14, e finalmente 14 + 10 = 24.
+```
 
 5.
 
@@ -126,12 +140,20 @@ por isso que a segunda afirmação é verdadeira.
 
 8.
 
-<ins>**d) A asserção é verdadeira e a razão é verdadeira, e a razão explica a asserção.**</ins>
+<ins>**b) A asserção é verdadeira e a razão é falsa.**</ins>
 <br>
-A asserção e a razão são verdadeiras. O modo que o enunciado aplica o conceito do polimorfismo é correto, onde objetos diferentes conseguem responder à mesma mensagem de maneiras diferentes (poli = muitas, morfo = forma. Polimorfismo = muitas formas). A razão proposta pelo enunciado corretamente explica como isso ocorre em Javascript, através da sobrecarga de métodos em uma classe, veja o exemplo abaixo:
+Apenas a asserção é verdadeira. A maneira no qual o enunciado explica o conceito do polimorfismo é correto, onde objetos diferentes conseguem responder à mesma mensagem de maneiras diferentes (poli = muitas, morfo = forma. Polimorfismo = muitas formas). Agora, a razão proposta pelo enunciado incorretamente explica como isso se aplica na linguagem Javascript, já que a sobrecarga de métodos em uma classe não é possível, pois se tiverem duas funções/métodos com o mesmo nome, a última será substituída e não sobrecarregada.
 
 ```javascript
+function dot() {
+    return a+b;     // a+b = 3
+}
 
+function dot() {
+    return a*b;     // a*b = 2
+}
+
+console.log(dot()); // Saída: 2
 ```
 
 9.
