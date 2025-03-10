@@ -152,3 +152,68 @@ function somaArray(num1, num2, num3, num4) {
 console.log(somaArray(1, 2, 3, 4));       // Saída: [ 2, 4, 6, 8 ]
 ```
 
+10.
+
+Como funciona a herança: a classe Livro vai herdar os membros (atributos e métodos) da classe Produto. Serão herdados os atributos nome, preco, dezPorcento e vintePorcento. No construtor da classe Livro, o super(nome, preco) é usado para chamar o construtor da classe pai (isso garante que os atributos sejam inicializados corretamente. E a classe Livro sobrescreve o método calcularDesconto() para alterar a lógica de cálculo.
+
+Como eu implementaria a modificação do método na classe Livro: o método de calcularDesconto() na classe Livro tem uma lógica diferente do método presente na classe Produto. Para garantir que os descontos de 20% sejam corretamente aplicados a livros, eu faço uso de um switch para ver se o parâmetro nome é "livro" ou não. Se o nome for "livro", o desconto de 20% será aplicado e caso o nome for de qualquer outro produto, o desconto de 10% será aplicado. E o motivo que eu usei um switch e não um if-else é porque se eu quiser checar outros livros ou outros tipos de produtos futuramente, é mais fácil de adicionar casos do que verificar um if-else.
+
+```javascript
+// Classe produto
+class Produto {
+    constructor(nome, preco) {
+        this.nome = nome;   // Atributo: nome do produto
+        this.preco = preco; // Atributo: preço do produto
+        
+        this.dezPorcento = this.preco - (this.preco * 0.1);   // cálculo de 10% será um atributo que será usado nos métodos
+        this.vintePorcento = this.preco - (this.preco * 0.2); // cálculo de 20% será um atributo que será usado nos métodos
+    }
+
+    calcularDesconto() {
+        console.log(`O preço descontado do produto ${this.nome}, que custava R$ ${this.preco.toFixed(2)}, é R$ ${this.dezPorcento.toFixed(2)}`);
+        return this.dezPorcento;
+    }
+
+}
+
+// Cenário criado
+let info = new Produto('Baralho', 10);
+
+info.calcularDesconto(); // Saída: O preço descontado do produto Baralho, que custava R$ 10.00, é de R$ 9.00
+
+// -------------------------------------------------------------------------------------------------------------------
+
+// Classe livro que pode herdar aspectos da classe produto. Isso inclui as variáveis que farão os cálculos dos descontos
+class Livro extends Produto {
+    constructor(nome, preco) {
+        super(nome, preco); // Chama o construtor da classe pai, que nesse caso é Produto
+    }
+
+    calcularDesconto() {
+        
+        let discount;
+
+        switch(this.nome.toLowerCase()) {
+            case "livro":
+                discount = this.vintePorcento; // Cálculo do disconto de 20% de desconto se o parâmetro nome = "livro"
+                break;
+            default:
+                discount = this.dezPorcento;   // Cálculo do disconto de 10% de desconto para qualquer outro produto que for inserido
+                break;
+        }
+        
+        console.log(`O preço descontado do produto ${this.nome}, que custava R$ ${this.preco.toFixed(2)}, é R$ ${discount.toFixed(2)} `)
+        return discount;
+    
+    }
+
+}
+
+// Criando dois cenários para testar o meu switch
+let info2 = new Livro("Livro", 35);
+let info3 = new Livro("Pelúcia", 60);
+
+info2.calcularDesconto(); // Saída: O preço descontado do produto Livro, que custava R$ 35.00, é de R$ 28.00
+
+info3.calcularDesconto(); // Saída: O preço descontado do produto Pelúcia, que custava R$ 60.00, é de R$ 54.00
+```
